@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RecipeList from './RecipeList'
+import RecipeEdit from './RecipeEdit'
 import '../css/app.css'
 import uuidv4 from 'uuid/v4'
 
@@ -18,14 +19,10 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes))
   }, [recipes])
 
-
-
   const recipeContextValue = {
     handleRecipeAdd,
     handleRecipeDelete
   }
-
-
 
   function handleRecipeAdd() {
     const newRecipe = {
@@ -35,7 +32,7 @@ function App() {
       cookTime: '1:00',
       instructions: 'Instr.',
       ingredients: [
-        { id: uuidv4(), name: 'Name', amount: '1 tbs' }
+        { id: uuidv4(), name: 'Name', amount: '1 Tbs' }
       ]
     }
 
@@ -49,10 +46,11 @@ function App() {
   return (
     <RecipeContext.Provider value={recipeContextValue}>
       <RecipeList recipes={recipes} />
+      <RecipeEdit />
     </RecipeContext.Provider>
-
   )
 }
+
 const sampleRecipes = [
   {
     id: 1,
@@ -64,7 +62,7 @@ const sampleRecipes = [
       {
         id: 1,
         name: 'Chicken',
-        amount: '2 pounds'
+        amount: '2 Pounds'
       },
       {
         id: 2,
@@ -83,7 +81,7 @@ const sampleRecipes = [
       {
         id: 1,
         name: 'Pork',
-        amount: '3 pounds'
+        amount: '3 Pounds'
       },
       {
         id: 2,
